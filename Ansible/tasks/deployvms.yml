@@ -51,9 +51,10 @@
     - { tagno: 2, tagkey: 'env_user', tagval: "{{ env_user }}" }
 
 # create a new private / public key pair:
-- local_action: cs_sshkeypair name={{ ssh_key }} 
+- local_action: cs_sshkeypair name={{ ssh_key_name }}
   register: key
-- debug: msg='private key is {{ key.private_key }}'
+- debug: msg='private key is {{ key.private_key }}
+
 
 ####################################################################
 # First management server

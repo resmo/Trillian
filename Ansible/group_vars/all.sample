@@ -40,7 +40,7 @@ def_vmware_vcsa_user: "Administrator@vsphere.local"
 def_vmware_vcsa_pass: "YOURPASSWORDHERE"
 def_vmware_esxi_username: "root"
 def_vmware_esxi_password: "YOURPASSWORDHERE"
-def_ssh_key: "admin"
+def_ssh_key_name: "admin"
 
 ################################################################################
 # Environment vars
