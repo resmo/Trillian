@@ -50,6 +50,11 @@
     - { tagno: 1, tagkey: 'env_uuid', tagval: "{{ env_uuid }}" }
     - { tagno: 2, tagkey: 'env_user', tagval: "{{ env_user }}" }
 
+# create a new private / public key pair:
+- local_action: cs_sshkeypair name={{ ssh_key }} 
+  register: key
+- debug: msg='private key is {{ key.private_key }}'
+
 ####################################################################
 # First management server
 #
@@ -61,6 +66,7 @@
     template: "{{ mgmtsrv_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
@@ -99,6 +105,7 @@
     service_offering: "{{ mgmtsrv_service_offering }}"
     template: "{{ mgmtsrv_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
+    ssh_key: "{{ ssh_key }}"
     project: "{{ build_project }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
@@ -139,6 +146,7 @@
     template: "{{ dbsrv_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
@@ -178,6 +186,7 @@
     template: "{{ dbsrv_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
@@ -217,6 +226,7 @@
     template: "{{ kvm_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
@@ -273,6 +283,7 @@
     template: "{{ xs_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
@@ -329,6 +340,7 @@
     template: "{{ esxi_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
@@ -385,6 +397,7 @@
     template: "{{ vc_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
@@ -425,6 +438,7 @@
     template: "{{ marvin_server_template }}"
     hypervisor: "{{ management_vm_hypervisor }}"
     project: "{{ build_project }}"
+    ssh_key: "{{ ssh_key }}"
     zone: "{{ build_zone }}"
     keyboard: "{{ build_keyboard }}"
     tags:
